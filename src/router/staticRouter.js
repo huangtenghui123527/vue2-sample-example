@@ -4,7 +4,7 @@ export default [
   {
     path: '/',
     component: Layout,
-    redirect: '/home',
+    redirect: '/richTxt',
     hidden: true,
     id:"1",
     title:"编辑器",
@@ -15,7 +15,14 @@ export default [
         id:"1_1",
         title:"首页",
         component: () => import('@/views/home')
-      }
+      },
+      {
+        path: 'richTxt',
+        name: 'RichTxt',
+        id:"1_2",
+        title:"富文本编辑器",
+        component: () => import('@/views/richTxt')
+      },
     ]
   },
   {

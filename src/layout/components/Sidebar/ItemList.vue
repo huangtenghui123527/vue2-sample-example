@@ -24,15 +24,15 @@ export default {
 <style lang="scss" scoped>
 .sidebar-nav{
     font-size: 16px;
-    color: #333;
+    color: #bcbcbc;
   .r-link{
-    // padding: 15px 0;
-    height: 40px;
-    // line-height: 40px;
+    padding: 5px 0;
+    margin-left: 10px;
   }
-  // a{
-  //   padding: 15px 0;
-
-  // }
+  a{
+    color: #333;
+    display: inline-block;
+    width: 100%;
+  }
 }
 </style>

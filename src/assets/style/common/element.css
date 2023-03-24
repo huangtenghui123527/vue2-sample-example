@@ -1,0 +1,11 @@
+
+/* tinymce样式修改 */
+.mce-tinymce{
+  box-sizing: border-box !important;
+}
+
+
+/* element 样式 */
+/* .el-button--primary{
+  background-color: #fff;
+} */

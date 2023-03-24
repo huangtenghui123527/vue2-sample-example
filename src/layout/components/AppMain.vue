@@ -1,22 +1,25 @@
 <template>
   <section class="content-main">
-    <router-view />
-    <!-- <transition>
+    <transition>
       <keep-alive :include="cachedViews">
-        <router-view :key="key" style="overflow: auto;" />
+        <router-view  style="overflow: auto;" />
       </keep-alive>
-    </transition> -->
+    </transition>
   </section>
 </template>
 <script>
 export default {
-  name:"AppMain"
+  name:"AppMain",
+  data(){
+    return{
+      cachedViews:[]
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
 .content-main{
-  // width: calc(100% - 60px);
-  width: 100%;
+  width: calc(100% - 285px);
   height: calc(100% - 50px);
   padding: 10px;
   margin: 15px;
@@ -24,5 +27,6 @@ export default {
   background: #fff;
   flex-grow: 1;
   border-radius: 5px;
+  overflow-y: auto;
 }
 </style>
