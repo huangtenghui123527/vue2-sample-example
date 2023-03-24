@@ -1,0 +1,4 @@
+/* @import url(./reset.css); */
+
+@import "./common/reset.css";
+@import "./common/global.css";
