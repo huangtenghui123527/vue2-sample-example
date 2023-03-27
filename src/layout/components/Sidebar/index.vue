@@ -1,15 +1,6 @@
 <template>
   <div class="sidebar">
-    <!-- <div v-for="item in routes" :key="item.id">
-      <template v-if="item.children&&item.children.length" >
-        <span>{{item.title}}</span>
-        <ItemList :childArray="item.children" />
-      </template>
-      <template v-else> 
-        <router-link :to="item.path">{{item.title}}</router-link>
-      </template>
-    </div> -->
-    <ItemList :childArray="routes" />
+    <ItemList :childArray="routes"/>
   </div>
 </template>
 <script>
@@ -23,22 +14,50 @@ export default {
         const {routes} = this.$router.options;
         return routes;
       },
-      set(){
-
+      set(value){
+        console.log("value",value);
       }
-    }
+    },
+  },
+  watch:{
   },
   data(){
     return {
-
+      // currentRouter:{id:""},
+      // id:""
     }
   },
-  mounted(){
-    // console.log("this",this);
-    // console.log(this.$route);
-    // console.log(this.$router);
+  provide() {
+    return {
+      kid:""
+    }
   },
-
+  created(){
+    this.getFindRouterName();
+  },
+  mounted(){
+  },
+  methods:{
+    getFindRouterName(){
+      const {path} = this.$route;
+      this._provided.kid= findRouter(this.routes).id
+      function findRouter(routeArray){
+        let currentRouter = null;
+        for(let item of routeArray){
+          if(item==null||item=={}) continue;
+          if(item.path!="/"&&path.indexOf(item.path)!=-1 ){
+            currentRouter = item;
+            break;
+          }else if(item.children&&item.children.length){
+            currentRouter= findRouter(item.children)
+          }else {
+            continue;
+          }
+        }
+        return currentRouter;
+      }
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

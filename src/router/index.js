@@ -4,8 +4,8 @@ import Router from 'vue-router'
 import staticRouter from "./staticRouter"
 
 // console.log("staticRouter",staticRouter);
-Vue.use(Router)
-const createRouter = () =>
+  Vue.use(Router)
+  const createRouter = () =>
   new Router({
     // mode: 'history', // require service support
     scrollBehavior: () => ({ y: 0 }),
@@ -14,4 +14,9 @@ const createRouter = () =>
   })
   const router = createRouter()
 
+  // router.afterEach((to, from, failure) => {
+  //   console.log("to",to);
+  //   console.log("from",from);
+  //   console.log("failure",failure);
+  // })
   export default router;

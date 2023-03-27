@@ -1,10 +1,6 @@
 <template>
   <div>
-    <!-- <Tinymce
-      v-model="orderInstructions"
-      :tinymce-id="0"
-      @input="customInput"
-    /> -->
+    HOME
   </div>
 </template>
 <script>

@@ -23,6 +23,13 @@ export default [
         title:"富文本编辑器",
         component: () => import('@/views/richTxt')
       },
+      {
+        path: 'selectInput',
+        name: 'SelectInput',
+        id:"1_3",
+        title:"选择输入编辑",
+        component: () => import('@/views/selectInput')
+      },
     ]
   },
   {
