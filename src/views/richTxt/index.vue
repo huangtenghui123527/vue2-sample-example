@@ -29,9 +29,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  h2,h4{
-    padding: 10px;
-  }
   .rich-content{
     width: 100%;
     height: 280px;

@@ -24,9 +24,16 @@ export default [
         component: () => import('@/views/richTxt')
       },
       {
+        path: 'markdown',
+        name: 'MarkDown',
+        id:"1_3",
+        title:"v-md-editor笔记本",
+        component: () => import('@/views/markdown')
+      },
+      {
         path: 'selectInput',
         name: 'SelectInput',
-        id:"1_3",
+        id:"1_4",
         title:"选择输入编辑",
         component: () => import('@/views/selectInput')
       },
