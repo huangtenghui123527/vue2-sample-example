@@ -3,9 +3,12 @@
 .mce-tinymce{
   box-sizing: border-box !important;
 }
-
+.v-md-editor{
+  box-shadow:none;
+  border-left:1px solid #ccc
+}
 
 /* element 样式 */
-/* .el-button--primary{
-  background-color: #fff;
-} */
+.demo-input .el-input-group__prepend {
+  width: 50px;
+}

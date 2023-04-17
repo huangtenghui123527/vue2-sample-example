@@ -1,14 +1,22 @@
 <template>
   <div class="mark-down">
-    <div class="md-warp">
+    <div class="md-warp clearfix">
+      <div class="md-file-nav fl">
+        <div class="md-file-new">新建</div>
+      </div>
             
-     <v-md-editor 
-      v-model="text" height="600px" 
-      :disabled-menus="[]"
-      @change="mdChange"
-      @save="mdSave"
-      @upload-image="uploadImage"
-     ></v-md-editor>
+
+      <div class="md-editor fl">
+          <v-md-editor 
+            v-model="text" height="600px" 
+            right-toolbar="preview sync-scroll customToolbar | fullscreen"
+            :disabled-menus="[]"
+            :toolbar="toolbar"
+            @change="mdChange"
+            @save="mdSave"
+            @upload-image="uploadImage"
+          ></v-md-editor>
+      </div>
     </div>
     <a href="http://ckang1229.gitee.io/vue-markdown-editor/zh/" target="_blank">v-md-editor 是基于 Vue 开发的 markdown 编辑器组件</a>
   </div>
@@ -18,15 +26,45 @@ export default {
   name:"MarkDown",
   data(){
     return {
-      text:`\`\`\`js
-import Vue from 'vue';
-import VueMarkdownEditor from '@kangc/v-md-editor';
-import '@kangc/v-md-editor/lib/style/base-editor.css';
-import vuepressTheme from '@kangc/v-md-editor/lib/theme/vuepress.js';
+       toolbar: {
+        customToolbar: {
+          title: '自定义目录',
+          icon: 'v-md-icon-toc',
+          action(editor) {
+            // toolbar点击时触发的函数
+            console.log("editor",editor);
+            //  editor.insert(function (selected) {
+            //   const prefix = '(((';
+            //   const suffix = ')))';
+            //   const placeholder = '请输入文本';
+            //   const content = selected || placeholder;
 
-VueMarkdownEditor.use(vuepressTheme);
+            //   return {
+            //     text: `${prefix}${content}${suffix}`,
+            //     selected: content,
+            //   };
+            // });
+          },
+        },
+      },
+      text:`
+  ## 标题
+\`\`\`js
+import Vue from 'vue'
+import VueMarkdownEditor from '@kangc/v-md-editor';
+import vuepressTheme from '@kangc/v-md-editor/lib/theme/vuepress.js';
+import createLineNumbertPlugin from '@kangc/v-md-editor/lib/plugins/line-number/index';
+import Prism from 'prismjs';
+
+import '@kangc/v-md-editor/lib/style/base-editor.css';
+import '@kangc/v-md-editor/lib/theme/style/vuepress.css';
+VueMarkdownEditor.use(vuepressTheme, {
+  Prism,
+});
+VueMarkdownEditor.use(createLineNumbertPlugin());
 
 Vue.use(VueMarkdownEditor);
+
 \`\`\`
 `,
     }
@@ -67,13 +105,36 @@ Vue.use(VueMarkdownEditor);
 }
 </script>
 <style lang="scss" scoped>
+
 .mark-down{
   width: 100%;
   .md-warp{
-    width: 100%;
+    
     border: 1px solid #cfcfcf;
+    width: 100%;
     box-sizing: border-box;
     margin-bottom: 15px;
+    // box-shadow: 0 2px 12px 0 rgba(196, 196, 196, 24%);
+    .md-file-nav{
+      width: 150px;
+      height: 600px;
+      position: relative;
+      .md-file-new{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 5px 0;
+        cursor: pointer;
+        text-align: center;
+        color: #545454;
+        font-size: 16px;
+        border-top: 1px solid #cfcfcf;
+      }
+    }
+    .md-editor{
+      width: calc(100% - 150px);
+    }
   }
 }
 </style>
