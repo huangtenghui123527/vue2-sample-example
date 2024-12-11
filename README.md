@@ -1,5 +1,6 @@
 # vue2-sample-example
-vue2功能小样
+
+vue2 功能小样
 
 ## Project setup
 
@@ -26,5 +27,9 @@ npm run lint
 ```
 
 ### Customize configuration
+
+```
+依赖下载-npm版本（16.18.0）
+```
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
